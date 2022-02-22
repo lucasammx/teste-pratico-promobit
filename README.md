@@ -30,7 +30,8 @@ Para realizar a instalação, seguir os seguintes passos:
 5) Exectuar as Migrations/Seeders do laravel (php artisan migrate --seed)
     -- Se as tabelas já existirem em seu banco (php artisan migrate:refresh --seed)
 6) Gerar as chaves do laravel (php artisan key:generate)
-7) Finalizada a instalação, para visualizar o projeto basta executar: php artisan serve
+7) Gerar chave para JWT (php artisan jwt:secret)
+8) Finalizada a instalação, para visualizar o projeto basta executar: php artisan serve
 ```
 
 
