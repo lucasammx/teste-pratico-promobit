@@ -32,6 +32,8 @@ Para realizar a instalação, seguir os seguintes passos:
 6) Gerar as chaves do laravel (php artisan key:generate)
 7) Gerar chave para JWT (php artisan jwt:secret)
 8) Finalizada a instalação, para visualizar o projeto basta executar: php artisan serve
+
+IMPORTANTE: Executar Laravel em localhost e porta 8000
 ```
 
 
