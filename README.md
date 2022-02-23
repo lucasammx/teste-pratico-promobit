@@ -24,12 +24,14 @@ Para realizar a instalação, seguir os seguintes passos:
 
 ```
 1) Realizar instalação dos pré-requisitos
-2) Configurar o arquivo .env com as informações do seu banco (DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD)
-3) Executar no terminal (composer install)
-4) Exectuar as Migrations/Seeders do laravel (php artisan migrate --seed)
+2) copiar o arquivo .env.example para .env e colar na pasta
+3) Configurar o arquivo .env com as informações do seu banco (DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD)
+4) Executar no terminal (composer install)
+5) Exectuar as Migrations/Seeders do laravel (php artisan migrate --seed)
     -- Se as tabelas já existirem em seu banco (php artisan migrate:refresh --seed)
-5) Gerar as chaves do laravel (php artisan key:generate)
-6) Finalizada a instalação, para visualizar o projeto basta executar: php artisan serve
+6) Gerar as chaves do laravel (php artisan key:generate)
+7) Gerar chave para JWT (php artisan jwt:secret)
+8) Finalizada a instalação, para visualizar o projeto basta executar: php artisan serve
 ```
 
 
