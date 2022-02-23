@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Tag;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -119,6 +120,34 @@ class ProductController extends Controller
             return response()->json(["errors" => "Produto não encontrado"], Response::HTTP_BAD_REQUEST);
         } catch (\Exception $e) {
             return response()->json(["errors" => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function dashboard()
+    {
+        try {
+            $response = array(
+                "labels" => [],
+                "values" => []
+            );
+
+            $data = DB::select("SELECT
+                tag.name as tag_name,
+                COUNT(product_tag.product_id) AS qtd_products
+                FROM tag INNER JOIN product_tag ON tag.id = product_tag.tag_id
+                GROUP BY tag.name");
+
+            if (!empty($data)) {
+                foreach ($data as $value) {
+                    $response["labels"][] = $value->tag_name;
+                    $response["values"][] = $value->qtd_products;
+                }
+            }
+
+
+            return response()->json(["data" => $response], Response::HTTP_ACCEPTED);
+        } catch (Exception $e) {
+            return response()->json(['errors' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }
     }
 }

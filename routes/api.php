@@ -25,6 +25,7 @@ Route::prefix("auth")->group(function () {
 Route::middleware("auth:api")->group(function () {
     Route::prefix("products")->group(function () {
         Route::get('', [ProductController::class, 'index'])->name('products@index');
+        Route::get('/dashboard', [ProductController::class, 'dashboard'])->name('products@dashboard');
         Route::get('/{id}', [ProductController::class, 'show'])->name('products@show');
 
         Route::post('', [ProductController::class, 'store'])->name('products@store');
